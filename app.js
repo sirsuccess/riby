@@ -36,6 +36,13 @@ app.use(function (req, res, next) {
   next(err);
 });
 
+// Set up connection for resource
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`Application running on port: ${port}`);
+});
+
 // error handler
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
