@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+// var db = require("./config/db");
 
 app.use("/", index);
 app.use("/erase", eraseEvents);
@@ -32,8 +33,15 @@ app.use("/actors", actor);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   var err = new Error("Not Found");
-  err.status = 404;
+  err.status = 200;
   next(err);
+});
+
+// Set up connection for resource
+const port = process.env.PORT || 5000;
+
+app.listen(port, () => {
+  console.log(`Application running on port: ${port}`);
 });
 
 // error handler
