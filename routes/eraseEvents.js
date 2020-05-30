@@ -7,25 +7,22 @@ const {
   getByActor,
   eraseEvents,
 } = require("../controllers/events");
+const { deleteEvents, deleteRepos, deleteActors } = require("../queries/index");
 
 // Route related to delete events
 router.route("/").delete((req, res) => {
   try {
-    const sqlEvent = "DELETE from events";
-    const sqlRepo = "DELETE from repo";
-    const sqlActor = "DELETE from actor";
-
-    db.run(sqlActor, function (err, result) {
+    db.run(deleteActors, function (err, result) {
       if (err) {
         throw new Error(err.message);
       }
     });
-    db.run(sqlEvent, function (err, result) {
+    db.run(deleteEvents, function (err, result) {
       if (err) {
         throw new Error(err.message);
       }
     });
-    db.run(sqlRepo, function (err, result) {
+    db.run(deleteRepos, function (err, result) {
       if (err) {
         throw new Error(err.message);
       }
@@ -33,7 +30,7 @@ router.route("/").delete((req, res) => {
     res.status(200).json({});
   } catch (error) {
     res.status(400).json({
-      message: "success",
+      message: "failed",
     });
   }
 });
