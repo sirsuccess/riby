@@ -64,8 +64,6 @@ exports.getAllActorEvents =
   "WHERE actor_id=?" +
   "ORDER BY events.id ASC";
 
-exports.getEventActors = `SELECT * FROM events INNER JOIN repo on events.repo_id=repo.id INNER JOIN actor on events.actor_id=actor.id WHERE actor_id=? ORDER BY events.id ASC`;
-exports.deleteSingleEvent = "DELETE FROM events WHERE id = ?";
 exports.postEvent =
   "INSERT INTO events (id, type, repo_id, actor_id, created_at) VALUES (?,?,?,?,?)";
 exports.postActor = "INSERT INTO actor (id, login, avatar_url) VALUES (?,?,?)";
