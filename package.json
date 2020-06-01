@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prestart": "npm install",
     "start": "node ./bin/www",
     "pretest": "npm install",
     "dev": "nodemon ./bin/www",
-    "test": "./node_modules/.bin/mocha test"
+    "test": "./node_modules/.bin/mocha test",
+    "prestart": "npm install"
   },
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -27,6 +27,6 @@
     "morgan": "~1.8.1",
     "nodemon": "^2.0.4",
     "serve-favicon": "~2.4.2",
-    "sqlite3": "^3.1.9"
+    "sqlite3": "https://github.com/mapbox/node-sqlite3/tarball/master"
   }
 }

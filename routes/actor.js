@@ -2,7 +2,6 @@ const router = require("express").Router();
 
 const {
   getAllActors,
-  updateActor,
   getStreak,
   updateActorCtr,
 } = require("../controllers/actors");
